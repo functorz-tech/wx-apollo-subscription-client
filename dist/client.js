@@ -377,10 +377,8 @@ class SubscriptionClient {
     }
     connect() {
         this.client = new this.wsImpl(this.url, this.wsProtocols, ...this.wsOptionArguments);
-        console.log('ws impl created');
         this.checkMaxConnectTimeout();
         this.client.onopen = async () => {
-            console.log('subscription client onopen');
             if (this.status === this.wsImpl.OPEN) {
                 this.clearMaxConnectTimeout();
                 this.closedByUser = false;

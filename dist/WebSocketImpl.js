@@ -21,7 +21,6 @@ class WebSocketImpl extends eventemitter3_1.default {
             url: this.url,
             protocols: [this.protocol],
             success: res => {
-                console.log('connected', res);
                 const listeners = this.listenersByType.get('open');
                 if (listeners) {
                     listeners.forEach(listener => listener(res));
@@ -40,21 +39,18 @@ class WebSocketImpl extends eventemitter3_1.default {
             }
         });
         this.socketTask.onError((ev) => {
-            console.log('error', ev);
             const listeners = this.listenersByType.get('error');
             if (listeners) {
                 listeners.forEach(listener => listener(ev));
             }
         });
         this.socketTask.onMessage((ev) => {
-            console.log('message', ev);
             const listeners = this.listenersByType.get('message');
             if (listeners) {
                 listeners.forEach(listener => listener(ev));
             }
         });
         this.socketTask.onOpen((ev) => {
-            console.log('opened', ev);
             const listeners = this.listenersByType.get('open');
             if (listeners) {
                 listeners.forEach(listener => listener(ev));
@@ -119,9 +115,8 @@ class WebSocketImpl extends eventemitter3_1.default {
         throw new Error('Method not implemented.'); // maybe return a chained function depending on the content of listenersByType
     }
     set onopen(listener) {
-        console.log('setting ws impl onopen');
         this.listenersByType.set('open', new Set([listener]));
-        if (this.readyState === exports.OPEN) {
+        if (this.readyState === exports.OPEN && listener) {
             listener.apply(this);
         }
     }
@@ -135,10 +130,6 @@ class WebSocketImpl extends eventemitter3_1.default {
         this.socketTask.close({ code, reason });
     }
     send(data) {
-        console.log('send', data);
-        if (data.toString().indexOf('subscription') >= 0) {
-            console.log('subscription message');
-        }
         const d = data;
         this.socketTask.send({ data: d });
     }
