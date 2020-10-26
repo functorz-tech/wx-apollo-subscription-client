@@ -1,6 +1,6 @@
 {
   "name": "wx-apollo-subscription-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A drop-in replacement for standard websocket that works in wechat miniprogram, useful when you want to utilize graphql subscription",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
