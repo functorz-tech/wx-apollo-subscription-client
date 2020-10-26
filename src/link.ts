@@ -2,7 +2,7 @@ import { ApolloLink, Operation, FetchResult, Observable } from 'apollo-link';
 
 import { SubscriptionClient } from './client';
 
-export default class WebSocketLink extends ApolloLink {
+export class WebSocketLink extends ApolloLink {
   private subscriptionClient: SubscriptionClient;
 
   constructor(paramsOrClient: SubscriptionClient) {

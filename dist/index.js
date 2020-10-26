@@ -5,3 +5,4 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./WebSocketImpl"));
 __export(require("./client"));
+__export(require("./link"));

@@ -3,7 +3,7 @@ export declare const CONNECTING = 0;
 export declare const OPEN = 1;
 export declare const CLOSING = 2;
 export declare const CLOSED = 3;
-export default class WebSocketImpl extends EventEmitter implements WebSocket {
+export declare class WebSocketImpl extends EventEmitter implements WebSocket {
     static CLOSED: number;
     static CLOSING: number;
     static CONNECTING: number;

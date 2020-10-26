@@ -157,7 +157,7 @@ class WebSocketImpl extends eventemitter3_1.default {
         listeners.add(listener);
     }
 }
-exports.default = WebSocketImpl;
+exports.WebSocketImpl = WebSocketImpl;
 WebSocketImpl.CLOSED = 3;
 WebSocketImpl.CLOSING = 2;
 WebSocketImpl.CONNECTING = 0;

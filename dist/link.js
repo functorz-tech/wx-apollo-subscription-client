@@ -10,4 +10,4 @@ class WebSocketLink extends apollo_link_1.ApolloLink {
         return this.subscriptionClient.request(operation);
     }
 }
-exports.default = WebSocketLink;
+exports.WebSocketLink = WebSocketLink;
