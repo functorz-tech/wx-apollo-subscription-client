@@ -60,7 +60,6 @@ export class WebSocketImpl extends EventEmitter implements WebSocket {
       url: this.url,
       protocols: [this.protocol],
       success: res => {
-        console.log('connected', res);
         const listeners = this.listenersByType.get('open');
         if (listeners) {
           listeners.forEach(listener => listener(res));
@@ -79,21 +78,18 @@ export class WebSocketImpl extends EventEmitter implements WebSocket {
       }
     });
     this.socketTask.onError((ev: WX.ErrorEvent) => {
-      console.log('error', ev);
       const listeners = this.listenersByType.get('error');
       if (listeners) {
         listeners.forEach(listener => listener(ev));
       }
     });
     this.socketTask.onMessage((ev: WX.MessageEvent<any>) => {
-      console.log('message', ev);
       const listeners = this.listenersByType.get('message');
       if (listeners) {
         listeners.forEach(listener => listener(ev));
       }
     });
     this.socketTask.onOpen((ev: WX.OnOpenEvent) => {
-      console.log('opened', ev);
       const listeners = this.listenersByType.get('open');
       if (listeners) {
         listeners.forEach(listener => listener(ev));
@@ -154,9 +150,8 @@ export class WebSocketImpl extends EventEmitter implements WebSocket {
   }
 
   public set onopen(listener: (this: WebSocket, ev: Event) => any) {
-    console.log('setting ws impl onopen');
     this.listenersByType.set('open', new Set([listener]));
-    if (this.readyState === OPEN) {
+    if (this.readyState === OPEN && listener) {
       listener.apply(this);
     }
   }
@@ -176,10 +171,6 @@ export class WebSocketImpl extends EventEmitter implements WebSocket {
   send(
     data: string | ArrayBuffer | SharedArrayBuffer | Blob | ArrayBufferView
   ): void {
-    console.log('send', data);
-    if (data.toString().indexOf('subscription') >= 0) {
-      console.log('subscription message');
-    }
     const d = data as string;
     this.socketTask.send({ data: d });
   }
