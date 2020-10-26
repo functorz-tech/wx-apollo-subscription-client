@@ -1,0 +1,16 @@
+# Installation
+> `npm install --save @types/backo2`
+
+# Summary
+This package contains type definitions for backo2 (https://github.com/mokesmokes/backo).
+
+# Details
+Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/backo2
+
+Additional Details
+ * Last updated: Wed, 18 Sep 2019 17:11:04 GMT
+ * Dependencies: none
+ * Global values: none
+
+# Credits
+These definitions were written by Retsam <https://github.com/Retsam>.
