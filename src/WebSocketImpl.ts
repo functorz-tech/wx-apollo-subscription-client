@@ -7,13 +7,6 @@ export const CLOSING = 2;
 export const CLOSED = 3;
 
 export class WebSocketImpl extends EventEmitter implements WebSocket {
-  public static CLOSED = 3;
-
-  public static CLOSING = 2;
-
-  public static CONNECTING = 0;
-
-  public static OPEN = 1;
 
   public get CLOSED() {
     return 3;

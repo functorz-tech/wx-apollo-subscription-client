@@ -149,7 +149,3 @@ class WebSocketImpl extends eventemitter3_1.default {
     }
 }
 exports.WebSocketImpl = WebSocketImpl;
-WebSocketImpl.CLOSED = 3;
-WebSocketImpl.CLOSING = 2;
-WebSocketImpl.CONNECTING = 0;
-WebSocketImpl.OPEN = 1;
